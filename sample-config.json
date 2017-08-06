@@ -15,6 +15,10 @@
 			"service": "Light",
 			"name": "Bedroom Lamp",
 			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
+			
 			"switchHandling": "realtime",
 			"on_url": "http://localhost/controller/1700/ON",
 			"off_url": "http://localhost/controller/1700/OFF",
@@ -35,6 +39,10 @@
 			"http_method": "GET",
 			"service": "Light",
 			"name": "Color Changing Lamp",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
 			
 			"switchHandling": "realtime",
 			"on_url": "http://localhost/controller/1700/ON",
@@ -67,6 +75,10 @@
 			"http_method": "GET",
 			"service": "Switch",
 			"name": "Power Outlet",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
 			
 			"on_url": "http://localhost/controller/1800/ON",
 			"off_url": "http://localhost/controller/1800/OFF",
