@@ -1,54 +1,80 @@
 {
-  "bridge": {
-    "name": "HomeBridge",
-    "username": "CC:22:3D:E3:CE:30",
-    "port": 51826,
-    "pin": "031-45-154"
-  },
+	"bridge": {
+		"name": "HomeBridge",
+		"username": "CC:22:3D:E3:CE:30",
+		"port": 51826,
+		"pin": "031-45-154"
+	},
 
-  "description": "HomeBridge HTTP Status Control",
+	"description": "HomeBridge HTTP Status Control",
 
-  "accessories": [
-    {
-      "accessory": "Http",
-      "name": "Alfresco Lamp",
-      "switchHandling": "realtime",
-      "http_method": "GET",
-      "on_url": "http://localhost/controller/1700/ON",
-      "off_url": "http://localhost/controller/1700/OFF",
-      "status_url": "http://localhost/status/100059",
-      "status_on": "ON",
-      "status_off": "OFF",
-      "service": "Light",
-      "brightnessHandling": "yes",
-      "brightness_url": "http://localhost/controller/1707/%b",
-      "brightnesslvl_url": "http://localhost/status/100054",
-      "sendimmediately": "",
-      "username" : "",
-      "password" : ""
-    },
-    {
-      "accessory": "Http",
-      "name": "Color Changing Lamp",
-      "switchHandling": "realtime",
-      "http_method": "GET",
-      "on_url": "http://localhost/controller/1700/ON",
-      "off_url": "http://localhost/controller/1700/OFF",
-      "status_url": "http://localhost/status/100059",
-      "status_on": {
-        "power": "ON",
-        "color": "Blue"
-      },
-      "status_off": {
-        "power": "OFF"
-      },
-      "service": "Light",
-      "brightnessHandling": "yes",
-      "brightness_url": "http://localhost/controller/1707/%b",
-      "brightnesslvl_url": "http://localhost/status/100054",
-      "sendimmediately": "",
-      "username" : "",
-      "password" : ""
-    }
-  ]
+	"accessories": [
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Light",
+			"name": "Bedroom Lamp",
+			
+			"switchHandling": "realtime",
+			"on_url": "http://localhost/controller/1700/ON",
+			"off_url": "http://localhost/controller/1700/OFF",
+			"status_url": "http://localhost/status/100059",
+			"status_on": "ON",
+			"status_off": "OFF",
+			
+			"brightnessHandling": "yes",
+			"brightness_url": "http://localhost/controller/1707/%b",
+			"brightnesslvl_url": "http://localhost/status/100054",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Light",
+			"name": "Color Changing Lamp",
+			
+			"switchHandling": "realtime",
+			"on_url": "http://localhost/controller/1700/ON",
+			"off_url": "http://localhost/controller/1700/OFF",
+			"status_url": "http://localhost/status/100059",
+			"status_on": {
+				"power": "ON",
+				"color": "Blue"
+			},
+			"status_off": {
+				"power": "OFF"
+			},
+			
+			"brightnessHandling": "yes",
+			"brightness_url": "http://localhost/controller/1707/%b",
+			"brightnesslvl_url": "http://localhost/status/100054",
+			
+			"colorHandling": "yes",
+			"hueset_url": "http://localhost/hue/set/1707/%b",
+			"hue_url": "http://localhost/hue/status/100054",
+			"saturationset_url": "http://localhost/saturation/set/1707/%b",
+			"saturation_url": "http://localhost/saturation/status/100054",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Switch",
+			"name": "Power Outlet",
+			
+			"on_url": "http://localhost/controller/1800/ON",
+			"off_url": "http://localhost/controller/1800/OFF",
+			"status_url": "http://localhost/status/100060",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		}
+	]
 }
