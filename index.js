@@ -593,7 +593,7 @@ HttpAccessory.prototype = {
 							.on('get', this.getSaturation.bind(this))
 							.on('set', this.setSaturation.bind(this));
 					break;
-					case "realtime":
+					case: "realtime":
 						this.lightbulbService 
 							.addCharacteristic(new Characteristic.Hue())
 							.on('get', function(callback) {callback(null, that.currenthue)})
