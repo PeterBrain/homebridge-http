@@ -573,7 +573,7 @@ HttpAccessory.prototype = {
 							.on("get", this.getBrightness.bind(this))
 							.on("set", this.setBrightness.bind(this));
 					break;
-					case: "realtime":
+					case "realtime":
 						this.lightbulbService
 							.addCharacteristic(new Characteristic.Brightness())
 							.on("get", function(callback) {callback(null, that.currentlevel)})
@@ -593,7 +593,7 @@ HttpAccessory.prototype = {
 							.on('get', this.getSaturation.bind(this))
 							.on('set', this.setSaturation.bind(this));
 					break;
-					case: "realtime":
+					case "realtime":
 						this.lightbulbService 
 							.addCharacteristic(new Characteristic.Hue())
 							.on('get', function(callback) {callback(null, that.currenthue)})
