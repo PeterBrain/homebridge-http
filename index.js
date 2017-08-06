@@ -11,6 +11,11 @@ module.exports = function (homebridge) {
 function HttpAccessory(log, config) {
 	this.log = log;
 
+	// accessory details
+	this.manufacturer = config["manufacturer"] || "HTTP Manufacturer";
+	this.model = config["model"] || "HTTP Model";
+	this.serial_number = config["serial_number"] || "HTTP Serial Number";
+	
 	// define methods
 	this.name = config["name"];
 	this.http_method = config["http_method"] || "GET";
@@ -480,9 +485,9 @@ HttpAccessory.prototype = {
 		var informationService = new Service.AccessoryInformation();
 
 		informationService
-			.setCharacteristic(Characteristic.Manufacturer, "HTTP Manufacturer")
-			.setCharacteristic(Characteristic.Model, "HTTP Model")
-			.setCharacteristic(Characteristic.SerialNumber, "HTTP Serial Number");
+			.setCharacteristic(Characteristic.Manufacturer, this.manufacturer)
+			.setCharacteristic(Characteristic.Model, this.model)
+			.setCharacteristic(Characteristic.SerialNumber, this.serial_number);
 
 		switch (this.service) {
 			case "Switch":
