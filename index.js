@@ -53,8 +53,8 @@ function HttpAccessory(log, config) {
 
 	// realtime polling info
 	this.state = false;
-	this.currentlevel = 0;
 	this.enableSet = true;
+	this.currentlevel = 0;
 	this.currenthue = 0;
 	this.currentsaturation = 0;
 	
@@ -62,7 +62,7 @@ function HttpAccessory(log, config) {
 
 	
 	// Status Polling, if you want to add additional services that don't use switch handling you can add something like this || (this.service=="Smoke" || this.service=="Motion"))
-	if ((this.status_url && this.switchHandling === "realtime") || (this.service=="Occupancy") || (this.service=="Smoke" || this.service=="Motion")) {
+	if ((this.status_url && this.switchHandling === "realtime") || (this.status_url && this.service === "Smoke") || (this.status_url && this.service === "Motion") || (this.status_url && this.service === "Occupancy") || (this.status_url && this.service === "Leak") || (this.status_url && this.service === "StatelessProgrammableSwitch")) {
 		
 		var powerurl = this.status_url;
 		var statusemitter = pollingtoevent(function(done) {
@@ -627,13 +627,56 @@ HttpAccessory.prototype = {
 			break;
 				
 			case "Occupancy":
-				this.motionService = new Service.OccupancySensor(this.name);
+				this.occupancyService = new Service.OccupancySensor(this.name);
 				this.switchHandling === "realtime";                
-				this.motionService
+				this.occupancyService
 					.getCharacteristic(Characteristic.OccupancyDetected)
 					.on('get', function(callback) {callback(null, that.state)});
-				return [this.motionService];
+				return [this.occupancyService];
 			break;
+				
+			case "Leak":
+				this.leakService = new Service.LeakSensor(this.name);
+				this.switchHandling === "realtime";                
+				this.leakService
+					.getCharacteristic(Characteristic.LeakDetected)
+					.on('get', function(callback) {callback(null, that.state)});
+				return [this.leakService];
+			break;
+				
+			case "StatelessProgrammableSwitch":
+				this.statelessProgrammableSwitchService = new Service.StatelessProgrammableSwitch(this.name);
+				/*this.switchHandling === "realtime";                
+				this.statelessProgrammableSwitchService
+					.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+					.on('get', function(callback) {callback(null, that.state)});*/
+				
+				switch (this.switchHandling) {
+					case "yes":
+						this.statelessProgrammableSwitchService
+							.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+							.on("get", this.getPowerState.bind(this))
+							.on("set", this.setPowerState.bind(this));
+					break;
+					case "realtime":
+						this.statelessProgrammableSwitchService
+							.getCharacteristic(Characteristic.ProgrammableSwitchEvent)
+							.on('get', function(callback) {callback(null, that.state)})
+							.on("set", this.setPowerState.bind(this));
+					break;
+				}
+				
+				return [this.statelessProgrammableSwitchService];
+			break;
+			
+			/*case "Obstruction":
+				this.obstructionService = new Service.ContactSensor(this.name);
+				this.switchHandling === "realtime";                
+				this.obstructionService
+					.getCharacteristic(Characteristic.ObstructionDetected)
+					.on('get', function(callback) {callback(null, that.state)});
+				return [this.obstructionService];
+			break;*/
 		}
 	}
 };
