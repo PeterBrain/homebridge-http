@@ -87,6 +87,72 @@
 			"sendimmediately": "",
 			"username": "",
 			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Smoke",
+			"name": "Smoke Detector",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
+			
+			"status_url": "http://localhost/status/100070",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Motion",
+			"name": "Motion Detector",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
+			
+			"status_url": "http://localhost/status/100080",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "Leak",
+			"name": "Water Leak",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
+			
+			"status_url": "http://localhost/status/100090",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
+		},
+		{
+			"accessory": "Http",
+			"http_method": "GET",
+			"service": "StatelessProgrammableSwitch",
+			"name": "Stateless Programmable Switch",
+			
+			"manufacturer": "",
+			"model": "",
+			"serial_number": "",
+			
+			"on_url": "http://localhost/controller/1900/ON",
+			"off_url": "http://localhost/controller/1900/OFF",
+			"status_url": "http://localhost/status/100100",
+			
+			"sendimmediately": "",
+			"username": "",
+			"password": ""
 		}
 	]
 }
